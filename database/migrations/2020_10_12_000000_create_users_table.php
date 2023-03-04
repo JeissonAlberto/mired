@@ -7,18 +7,23 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations.correr migraciones
      */
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('cedula')->unique();
+            $table->string('name', 50);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password' );
+            $table->string('direccion', 50);
+            $table->biginteger('telefono');
             $table->rememberToken();
             $table->timestamps();
+            //$table->unsignedBigInteger('service_id');
+
         });
     }
 
