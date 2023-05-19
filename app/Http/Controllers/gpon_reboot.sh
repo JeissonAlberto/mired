@@ -8,15 +8,11 @@ IFS=
 # echo "Enter GPON username:"
 # read USER
 USER=Epadmin
-#echo "Enter GPON password:"
 PASSWLAN=123456789
 PASS=adminEp
 SSID=HUAWEI
 IP=192.168.18.1
 
-if [ -z "${USER}" ] || [ -z "${PASS}" ]; then
-    echo "Error: username and password required" && exit 1
-fi
 
 PASS64=$(echo -n "${PASS}" | base64)
 

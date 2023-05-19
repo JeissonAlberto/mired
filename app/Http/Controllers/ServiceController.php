@@ -6,6 +6,7 @@ use App\Models\Service;
 use App\Http\Requests\StoreServiceRequest;
 use App\Http\Requests\UpdateServiceRequest;
 use App\Models\User;
+use http\Env\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 
@@ -103,6 +104,20 @@ class ServiceController extends Controller
         $user = $service->user;
 
         return redirect('/users/'.$user->id)->with('success', "Servicio actualizado");
+    }
+
+    public function updatePassword(Service $service, UpdateServiceRequest $request)
+    {
+    //$service = Service::where('id',  $request["id"])->first();
+        $service->update([
+            "ssid"=> $request["ssid"],
+            "password_ssid"=> $request["password"],
+        ]);
+        if ($service->id != ""){
+            return response()->json("",200);
+        } else {
+            return response()->json(['message' => 'Servicio no encontrado'], 404);
+        }
     }
 
     /**

@@ -17,8 +17,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        $RESULT = shell_exec("gpon_reboot.sh");
-        var_dump($RESULT);
+
+
         return view("users.index", compact(['users']));
     }
 
@@ -50,6 +50,25 @@ class UserController extends Controller
         return view('users.show',compact('user'));
 
     }
+    public function getUser(string $email)
+    {
+            $user = User::where('email', $email)->first();
+            if ($user->id != ""){
+            return response()->json($user, 200);
+        } else {
+            return response()->json(['message' => 'Invalid data'], 404);
+        }
+    }
+
+    public function getUserServices(string $email)
+    {
+            $user = User::where('email', $email)->first();
+            if ($user->id != ""){
+            return response()->json($user->services[0], 200);
+        } else {
+            return response()->json(['message' => 'Invalid data'], 404);
+        }
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -75,6 +94,24 @@ class UserController extends Controller
             "password"=> $request["password"],
         ]);
         return redirect('/users')->with('success', "Usuario actualizado");
+    }
+    public function updateUser(User $user,UserUpdateRequest $request): \Illuminate\Http\JsonResponse
+    {
+
+        $request->validated();
+        //$user = User::where('email',  $request["email"])->first();
+        $user->update([
+            "cedula"=> $request["cedula"],
+            "name"=> $request["name"],
+            "telefono"=> $request["telefono"],
+            "direccion"=> $request["direccion"],
+            "password"=> $request["password"],
+        ]);
+        if ($user->id != ""){
+            return response()->json("",200);
+        } else {
+            return response()->json(['message' => 'Usuario no encontrado'], 404);
+        }
     }
 
     /**

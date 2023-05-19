@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user/{email}', [UserController::class, 'getUser']);
+    Route::get('/servicesByUserEmail/{email}', [UserController::class, 'getUserServices']);
+    Route::put('/userUpdate/{user}', [UserController::class, 'updateUser']);
+    Route::put('/updatePassword/{service}', [ServiceController::class, 'updatePassword']);
 });
