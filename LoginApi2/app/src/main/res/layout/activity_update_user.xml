@@ -1,0 +1,74 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:gravity="center"
+android:paddingHorizontal="50dp"
+tools:context=".ActivityUpdateUser">
+
+    <EditText
+    android:id="@+id/etName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Nombre completo"
+    android:minHeight="48dp" />
+
+    <EditText
+    android:id="@+id/etCedula"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Cedula"
+    android:inputType="text|number"
+    android:minHeight="48dp" />
+
+    <EditText
+    android:id="@+id/etEmail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Correo"
+    android:inputType="textEmailAddress"
+    android:minHeight="48dp" />
+
+    <EditText
+    android:id="@+id/etTelefono"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Telefono"
+    android:inputType="text|number"
+    android:minHeight="48dp" />
+
+    <EditText
+    android:id="@+id/etDireccion"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Direccion"
+    android:inputType="textPostalAddress"
+    android:minHeight="48dp" />
+
+    <EditText
+    android:id="@+id/etPassword"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Contraseña"
+    android:inputType="textPassword"
+    android:minHeight="48dp" />
+
+    <EditText
+    android:id="@+id/etConfirmation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="28dp"
+    android:hint="Confirmar contraseña"
+    android:inputType="textPassword"
+    android:minHeight="48dp" />
+
+
+    <Button
+    android:id="@+id/btnRegister"
+    android:text="Actualizar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
+
+</LinearLayout>

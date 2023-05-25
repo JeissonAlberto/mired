@@ -9,6 +9,7 @@ use App\Models\User;
 use http\Env\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Process;
 
 class ServiceController extends Controller
 {
@@ -88,27 +89,39 @@ class ServiceController extends Controller
     public function update(UpdateServiceRequest $request, Service $service): RedirectResponse
     {
         $request->validated();
-        $service->update([
-            "tipo_de_tecnologia"=> $request["tipo_de_tecnologia"],
-            "marca"=> $request["marca"],
-            "referencia"=> $request["referencia"],
-            "sn"=> $request["sn"],
-            "direccion_mac"=> $request["direccion_mac"],
-            "direccion_ip"=> $request["direccion_ip"],
-            "ssid"=> $request["ssid"],
-            "password_ssid"=> $request["password_ssid"],
-            "precio"=> $request["precio"],
-            "velocidad"=> $request["velocidad"],
-            "user_id"=> $request["user_id"],
-        ]);
+        echo $request;
+        $cmd = 'sh /var/www/html/mired/app/Http/Controllers/gpon_reboot.sh '.$request["ssid"].' '.$request["direccion_ip"].' '.$request["password_ssid"];
+        $result  = Process::run($cmd);
+        echo $result->errorOutput();
         $user = $service->user;
-
-        return redirect('/users/'.$user->id)->with('success', "Servicio actualizado");
+        if ($result->successful()) {
+            $service->update([
+                "tipo_de_tecnologia"=> $request["tipo_de_tecnologia"],
+                "marca"=> $request["marca"],
+                "referencia"=> $request["referencia"],
+                "sn"=> $request["sn"],
+                "direccion_mac"=> $request["direccion_mac"],
+                "direccion_ip"=> $request["direccion_ip"],
+                "ssid"=> $request["ssid"],
+                "password_ssid"=> $request["password_ssid"],
+                "precio"=> $request["precio"],
+                "velocidad"=> $request["velocidad"],
+                "user_id"=> $request["user_id"],
+            ]);
+            
+    
+            return redirect('/users/'.$user->id)->with('success', "Servicio actualizado");
+        }
+        
+        return redirect('/users/'.$user->id)->with('error', "Error a tratar de actualizar");
     }
 
     public function updatePassword(Service $service, UpdateServiceRequest $request)
     {
     //$service = Service::where('id',  $request["id"])->first();
+        $cmd = 'sh /var/www/html/mired/app/Http/Controllers/gpon_reboot.sh '.$request["ssid"].' '.$service->direccion_ip.' '.$request["password"];
+        $result  = Process::run($cmd);
+        if ($result->successful()) {
         $service->update([
             "ssid"=> $request["ssid"],
             "password_ssid"=> $request["password"],
@@ -117,6 +130,9 @@ class ServiceController extends Controller
             return response()->json("",200);
         } else {
             return response()->json(['message' => 'Servicio no encontrado'], 404);
+        }
+        }else {
+            return response()->json(['message' => 'modem no disponible'], 500);
         }
     }
 

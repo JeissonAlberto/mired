@@ -3,17 +3,16 @@
 # Reboot HUAWEI based GPON with web control
 #
 
-IFS=
 
 # echo "Enter GPON username:"
 # read USER
 USER=Epadmin
-PASSWLAN=123456789
+PASSWLAN=$3
 PASS=adminEp
-SSID=HUAWEI
-IP=192.168.18.1
+SSID=$1
+IP=$2
 
-
+echo ${PASSWLAN};
 PASS64=$(echo -n "${PASS}" | base64)
 
 GPON_URL="http://${IP}"
@@ -26,11 +25,11 @@ GPON_REBOOT_URL="$GPON_URL/html/ssmp/reset/set.cgi?x=InternetGatewayDevice.X_HW_
 GPON_SET_WLAN="$GPON_URL/html/amp/wlanbasic/set.cgi?w=InternetGatewayDevice.X_HW_DEBUG.AMP.WifiCoverSetWlanBasic&y=InternetGatewayDevice.LANDevice.1.WLANConfiguration.1&z=InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.WPS&k=InternetGatewayDevice.LANDevice.1.WLANConfiguration.1.PreSharedKey.1&RequestFile=html/amp/wlanbasic/WlanBasic.asp"
 
 # get initial token
-TOKEN=$(curl -Ss "${GPON_RAND_URL}" | sed 's|^\xef\xbb\xbf||')
+TOKEN=$(curl -Ss --connect-timeout 5 "${GPON_RAND_URL}" | sed 's|^\xef\xbb\xbf||')
 
 # log in and get cookie
 if [ -n "${TOKEN}" ]; then
-    COOKIE=$(curl -c - -Ss  \
+    COOKIE=$(curl -c - -Ss --connect-timeout 5 \
         -b "Cookie=body:Language:english:id=-1" \
         -d "UserName=${USER}" \
         -d "PassWord=${PASS64}" \
@@ -42,7 +41,7 @@ fi
 echo ${COOKIE}
 # get hw token
 if [ -n "${COOKIE}" ]; then
-    HWTOKEN=$(curl -Ss \
+    HWTOKEN=$(curl -Ss --connect-timeout 5\
         -b "Cookie=${COOKIE}" \
         "${GPON_WLAN}" \
         | grep "hwonttoken" | sed -E 's|^.+value="(\w+)">.*|\1|')
@@ -53,7 +52,7 @@ if [ -n "${COOKIE}" ]; then
         "${GPON_WLAN_1}" \
         )
         echo "token" + ${HWTOKEN1}
-    HWTOKEN2=$(curl -Ss \
+    HWTOKEN2=$(curl -Ss --connect-timeout 5\
         -b "Cookie=${COOKIE}" \
         -b "Upgrade-Insecure-Requests: 1" \
         -b "Content-Type: application/x-www-form-urlencoded" \
