@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "246760044895",
+    "project_id": "mired-c6666",
+    "storage_bucket": "mired-c6666.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246760044895:android:e4a85d3683c0b6a02a1eea",
+        "android_client_info": {
+          "package_name": "LoginApi.App"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246760044895-4cnsa7k9dqec7hp2pm8bllcs4t2qu1de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIvyvBXY7-4DFrHdkDttyU1NIZPpdg7eY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246760044895-4cnsa7k9dqec7hp2pm8bllcs4t2qu1de.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246760044895:android:eeabf426f75bde7b2a1eea",
+        "android_client_info": {
+          "package_name": "com.aldhix.loginapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246760044895-4cnsa7k9dqec7hp2pm8bllcs4t2qu1de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIvyvBXY7-4DFrHdkDttyU1NIZPpdg7eY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246760044895-4cnsa7k9dqec7hp2pm8bllcs4t2qu1de.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246760044895:android:9832827a80a5a9ba2a1eea",
+        "android_client_info": {
+          "package_name": "com.example.mired"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246760044895-4cnsa7k9dqec7hp2pm8bllcs4t2qu1de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIvyvBXY7-4DFrHdkDttyU1NIZPpdg7eY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246760044895-4cnsa7k9dqec7hp2pm8bllcs4t2qu1de.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

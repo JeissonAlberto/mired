@@ -1,7 +1,11 @@
 package com.aldhix.loginapi;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +13,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.aldhix.loginapi.databinding.ActivityUserBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarMenuView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -18,131 +26,80 @@ public class UserActivity extends AppCompatActivity {
     Button btnLogout, btnUpdate, btnServicios;
 
     private LocalStorage localStorage;
+    ActivityUserBinding binding;
 
+
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        binding = ActivityUserBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         localStorage = new LocalStorage(UserActivity.this);
-        tvName = findViewById(R.id.tvName);
-        tvEmail = findViewById(R.id.tvEmail);
-        tvTelefono = findViewById(R.id.tvTelefono);
-        tvCedula = findViewById(R.id.tvCedula);
-        tvDireccion = findViewById(R.id.tvDireccion);
-        btnLogout = findViewById(R.id.btnLogout);
-        btnUpdate = findViewById(R.id.btnUpdate);
-        btnServicios = findViewById(R.id.btnServicios);
 
-        getUser();
+        BottomNavigationView nav = findViewById(R.id.bottomNavigation);
+        Log.e("nav", String.valueOf(nav.getSelectedItemId()));
+        nav.setOnItemSelectedListener(item -> {
+            Log.e("bottomNavigation", "1");
+            switch (nav.getSelectedItemId()) {
+                case R.id.item_1:
+                    Log.e("estoy en la dos", "1");
+                    replaceFragment(new profile());
+                    break;
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logout();
+                case R.id.item_2:
+                    Log.e("estoy en la dos", "2");
+                    replaceFragment(new services());
+                    // Respond to navigation item 2 click
+                    break;
+                case R.id.item_3:
+                    Log.e("estoy en la dos", "3");
+                    break;
             }
+            return true;
+        });
+        replaceFragment(new profile());
+        binding.bottomNavigation.setOnItemSelectedListener(item -> {
+            Log.e("bottomNavigation", String.valueOf(item.getItemId()));
+            Log.e("bottomNavigation", String.valueOf(R.id.item_1));
+            Log.e("bottomNavigation", String.valueOf(nav.getSelectedItemId()));
+            switch (item.getItemId()) {
+                case R.id.item_1:
+                    Log.e("estoy en la dos", "1");
+                    replaceFragment(new profile());
+                    break;
+
+                case R.id.item_2:
+                    Log.e("estoy en la dos", "2");
+                    replaceFragment(new services());
+                    // Respond to navigation item 2 click
+                    break;
+                case R.id.item_3:
+                    Log.e("estoy en la dos", "3");
+                    replaceFragment(new contact());
+                    break;
+            }
+
+            return true;
         });
 
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                actualizar();
-            }
-        });
 
-        btnServicios.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                servicios();
-            }
-        });
+
+
 
     }
-    private void getUser() {
-      String url = getString(R.string.api_server)+"/user/"+localStorage.getEmail();
-      new Thread(new Runnable() {
-          @Override
-          public void run() {
-              Http http = new Http(UserActivity.this, url);
-              Log.e("URL USER", url);
-              http.setToken(true);
-              http.setMethod("GET");
-              http.send();
-
-              runOnUiThread(new Runnable() {
-                  @Override
-                  public void run() {
-                      Integer code = http.getStatusCode();
-                      Log.e("err code user", code.toString());
-                      if (code ==200){
-                          try {
-                              JSONObject response = new JSONObject(http.getResponse());
-                              String name = response.getString("name");
-                              localStorage.setName(name);
-                              String email = response.getString("email");
-                              String cedula = response.getString("cedula");
-                              localStorage.setCedula(cedula);
-                              String direccion = response.getString("direccion");
-                              localStorage.setDireccion(direccion);
-                              String telefono = response.getString("telefono");
-                              localStorage.setTelefono(telefono);
-                              tvName.setText(name);
-                              tvEmail.setText(email);
-                              tvCedula.setText(cedula);
-                              tvDireccion.setText(direccion);
-                              tvTelefono.setText(telefono);
-                              localStorage.setUserId(response.getString("id"));
-                          }catch (JSONException e){
-                              e.printStackTrace();
-                          }
-                      }
-                      else {
-                          Toast.makeText(UserActivity.this, "Error"+code, Toast.LENGTH_SHORT).show();
-                      }
-                  }
-              });
-          }
-      }).start();
+    public void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frame, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commitAllowingStateLoss();
     }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(UserActivity.this, LoginActivity.class);
 
-    private void logout() {
-       String url = getString(R.string.api_server)+"/logout";
-       new  Thread(new Runnable() {
-           @Override
-           public void run() {
-               Http http =new Http(UserActivity.this, url);
-               http.setMethod("post");
-               http.setToken(true);
-               http.send();
-
-               runOnUiThread(new Runnable() {
-                   @Override
-                   public void run() {
-                       Integer code = http.getStatusCode();
-                       if (code == 200){
-                           Intent intent = new Intent(UserActivity.this, LoginActivity.class);
-                           startActivity(intent);
-                           finish();
-                       }
-                       else {
-                           Toast.makeText(UserActivity.this, "Error"+code, Toast.LENGTH_SHORT).show();
-                       }
-                   }
-               });
-
-           }
-       }).start();
-    }
-
-    private void actualizar() {
-        Intent intent = new Intent(UserActivity.this, ActivityUpdateUser.class);
-        startActivity(intent);
-        finish();
-    }
-
-    private void servicios() {
-        Log.e("token", "termine");
-        Intent intent = new Intent(UserActivity.this, ServicesActivityModem.class);
         startActivity(intent);
         finish();
     }

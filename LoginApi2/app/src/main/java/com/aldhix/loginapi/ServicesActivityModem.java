@@ -40,6 +40,12 @@ public class ServicesActivityModem extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ServicesActivityModem.this, UserActivity.class);
+        startActivity(intent);
+        finish();
+    }
     private void actualizar() {
         Intent intent = new Intent(ServicesActivityModem.this, UpdatePasswordActivity.class);
         startActivity(intent);

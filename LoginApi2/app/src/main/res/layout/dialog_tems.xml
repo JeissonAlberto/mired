@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Términos y condiciones"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@android:color/black"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Términos y Condiciones de Uso de la Aplicación Móvil MIRED Comunicaciones
+Bienvenido(a) a la aplicación móvil de MIRED Comunicaciones. Al usar nuestra app, acepta cumplir con los siguientes términos:
+1.Aceptación de Términos: Usted acepta los términos y la Política de Tratamiento de Datos Personales.
+2.Tratamiento de Datos Personales: Autoriza el tratamiento de sus datos conforme a la Ley 1581 de 2012 y a nuestra Política de Datos.
+3.Finalidades del Tratamiento: Se tratarán sus datos para acceder y gestionar su red Wifi y brindarle información sobre nuestros servicios.
+4.Acceso y Verificación de Información: Podrá acceder, verificar y actualizar su información a través de la app.
+5.Seguridad de los Datos: Hemos implementado medidas de seguridad para proteger su información.
+6.Derechos de los Titulares: Tiene derecho a acceder, actualizar y rectificar sus datos siguiendo nuestra Política de Datos.
+7.Gestión de la Red Wifi: Puede acceder y cambiar la configuración de su red Wifi si es un servicio ofrecido por nosotros.
+8.Responsabilidad: Usted es responsable de la confidencialidad de su cuenta y acciones en la app y red Wifi.
+9.Vigencia y Modificación: Estos términos son válidos al aceptar y se aplican mientras su cuenta esté activa. Nos reservamos el derecho de modificarlos.
+10.Contacto: Para preguntas o inquietudes, comuníquese con nuestro equipo de atención al cliente.
+Al aceptar estos términos, declara su comprensión y aceptación plena del contenido aquí expuesto y de nuestras políticas.
+."
+        android:textColor="@android:color/black"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Aceptar"
+        android:id="@+id/btn_accept" />
+
+</LinearLayout>
+

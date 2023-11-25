@@ -6,15 +6,28 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:background="@color/cardview_light_background"
     android:paddingHorizontal="58dp"
+    android:theme="@style/Theme.Material3.Light.NoActionBar"
     tools:context=".LoginActivity">
 
 
+    <!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--    app:startIconDrawable="@drawable/ic_check"-->
+<!--    app:startIconContentDescription="Correo"-->
+<!--        android:id="@+id/etEmail"-->
+<!--        android:inputType="textEmailAddress"-->
+<!--        android:minHeight="48dp"-->
+<!--        android:hint="Correo"-->
+<!--        android:layout_height="wrap_content" -->
+<!--        android:layout_width="match_parent">-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="140dp"
-        android:layout_height="123dp"
-        app:srcCompat="@drawable/logo" />
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        app:srcCompat="@drawable/logoventanas" />
 
     <EditText
         android:id="@+id/etEmail"
@@ -43,14 +56,10 @@
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="245dp"
-        android:layout_height="49dp"
+        android:layout_height="wrap_content"
         android:text="REGISTRARSE" />
 
-    <Button
-        android:id="@+id/confirm_button"
-        android:layout_width="245dp"
-        android:layout_height="wrap_content"
-        android:text="recuperar contraceña" />
+
 
 
 </LinearLayout>

@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-permission android:name="android.permission.ACCESS_VENDOR_PROPERTIES" />
+
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -11,36 +17,41 @@
         android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:theme="@style/Theme.Material3.Light.NoActionBar"
         android:usesCleartextTraffic="true"
+
         tools:targetApi="31">
         <activity
             android:name=".ExceptionDisplay"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".UpdatePasswordActivity"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".ServicesActivityModem"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="false" />
         <activity
-            android:name=".ui.login.ServicesActivity"
-            android:exported="false"
-            android:label="@string/title_activity_services" />
-        <activity
             android:name=".ActivityUpdateUser"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".UserActivity"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:parentActivityName=".LoginActivity" />
         <activity
             android:name=".LoginActivity"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

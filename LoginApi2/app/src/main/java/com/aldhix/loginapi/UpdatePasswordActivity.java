@@ -41,7 +41,12 @@ public class UpdatePasswordActivity extends AppCompatActivity {
         });
 
     }
-
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(UpdatePasswordActivity.this, ServicesActivityModem.class);
+        startActivity(intent);
+        finish();
+    }
     private void getSSID() {
         etSSID.setText(localStorage.getSSID());
         }

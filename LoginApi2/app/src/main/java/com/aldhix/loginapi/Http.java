@@ -69,7 +69,7 @@ public class Http {
                 os.close();
             }
             statusCode = connection.getResponseCode();
-
+            Log.e("status",statusCode.toString());
            InputStreamReader isr;
             if (statusCode >= 200 && statusCode <= 299) {
                 // if success response

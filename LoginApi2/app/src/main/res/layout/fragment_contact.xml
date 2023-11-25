@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="28dp"
+    tools:context=".contact">
+
+    <TextView
+        android:text="Contacto"
+        android:textSize="28dp"
+        android:layout_marginBottom="28dp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="Dirección:"
+        android:textStyle="bold"
+        android:layout_marginBottom="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="Calle 7 6-31, Centro Comercial San Andresito, Local 12A, Pamplona, Norte de Santander"
+        android:layout_marginBottom="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:text="Teléfono:"
+        android:textStyle="bold" />
+
+
+    <ImageButton
+        android:id="@+id/btnLlamar"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:contentDescription="Botón para llama"
+        android:src="@drawable/llamar" />
+
+    <TextView
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:text="Correo:"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/btnEnviarCorreo"
+        android:layout_width="85dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="18dp"
+        android:onClick="enviarCorreo"
+        android:src="@drawable/correo"
+        android:contentDescription="TODO" />
+
+    <TextView
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:text="Web:"
+        android:textStyle="bold" />
+    <ImageButton
+        android:id="@+id/btnPagina"
+        android:layout_width="85dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="18dp"
+        android:onClick="Pagina"
+        android:src="@drawable/browser_chrome_icon_155716__2_" />
+
+    <TextView
+        android:layout_width="322dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:text="Test de Velocidad -GoogleFiber:"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/btnTest"
+        android:layout_width="85dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="18dp"
+        android:onClick="testVelocidad"
+        android:src="@drawable/velocidad" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:src="@drawable/pagossinfondo" />
+
+
+</LinearLayout>

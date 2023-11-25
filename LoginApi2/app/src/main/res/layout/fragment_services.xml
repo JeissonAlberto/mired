@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="28dp"
+    tools:context=".services">
+
+
+    <TextView
+        android:text="SERVICIOS"
+        android:textSize="28dp"
+        android:layout_marginBottom="28dp"
+        android:textStyle="bold"
+        android:layout_gravity="top"
+        tools:viewBindingIgnore="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/notFound"
+        android:textSize="15dp"
+        android:layout_marginBottom="28dp"
+        android:layout_gravity="top"
+        tools:viewBindingIgnore="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/planes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:viewBindingIgnore="true"
+        android:src="@drawable/planesmired"
+        android:visibility="gone"
+        />
+
+    <ListView
+        android:id="@+id/listServices"
+        android:layout_width="match_parent"
+        android:layout_height="512dp">
+
+    </ListView>
+<!--    <TextView-->
+<!--        android:id="@+id/tvTecnologia"-->
+<!--        android:text="TIPO DE TECONOLOGIA :"-->
+<!--        android:layout_marginBottom="18dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvPrecio"-->
+<!--        android:text="PRECIO :"-->
+<!--        android:layout_marginBottom="18dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvVelocidad"-->
+<!--        android:text="VELOCIDAD :"-->
+<!--        android:layout_marginBottom="18dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvSSID"-->
+<!--        android:text="N DE SERVICIO  :"-->
+<!--        android:layout_marginBottom="18dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+
+<!--    <Button-->
+<!--        android:id="@+id/btnUpdate"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:text="Cambiar Contraceña" />-->
+
+</LinearLayout>

@@ -43,11 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
         Log.e("general", "pase por aca");
-    btnLogin.setOnClickListener(view -> checkLogin());
-    btnRegister.setOnClickListener(v -> {
-    Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-    startActivity(intent);
-});
+        btnLogin.setOnClickListener(view -> checkLogin());
+        btnRegister.setOnClickListener(view -> checkRegister());
 
 
   }
@@ -62,6 +59,11 @@ public class LoginActivity extends AppCompatActivity {
         else{
             sendLogin();
         }
+    }
+
+    private void checkRegister(){
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     private void sendLogin() {

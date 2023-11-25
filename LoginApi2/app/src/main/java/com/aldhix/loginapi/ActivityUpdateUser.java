@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -145,5 +146,11 @@ public class ActivityUpdateUser extends AppCompatActivity {
 
                     }
                 }).show();
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ActivityUpdateUser.this, UserActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

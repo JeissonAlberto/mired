@@ -66,9 +66,9 @@ tools:context=".ActivityUpdateUser">
 
 
     <Button
-    android:id="@+id/btnRegister"
-    android:text="Actualizar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"/>
+        android:id="@+id/btnRegister"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:text="Actualizar" />
 
 </LinearLayout>
